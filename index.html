@@ -4,192 +4,185 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Construction Central</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="logo.png" alt="Construction Central Logo">
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="logo.png" alt="Construction Central Logo" class="logo">
                 <h1>Construction Central</h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#" id="home-link">Home</a></li>
+                    <li><a href="#" id="seller-portal-link">Seller Portal</a></li>
+                    <li><a href="#" id="cart-link">Cart <span id="cart-count">0</span></a></li>
                 </ul>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <div class="main-container">
-        <h2>Our Product Categories</h2>
-        <div class="sections-grid">
-            <div class="section-card" onclick="openSection('raw-materials')">
-                <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968" alt="Raw Materials">
-                <h3>Raw Materials</h3>
-            </div>
-            <div class="section-card" onclick="openSection('nails-fasteners')">
-                <img src="https://images.unsplash.com/photo-1584735422189-fbd23f4c6b8a" alt="Nails & Fasteners">
-                <h3>Nails & Fasteners</h3>
-            </div>
-            <div class="section-card" onclick="openSection('power-tools')">
-                <img src="https://images.unsplash.com/photo-1591798454113-023ed737a270" alt="Power Tools">
-                <h3>Power Tools</h3>
-            </div>
-            <div class="section-card" onclick="openSection('plumbing')">
-                <img src="https://images.unsplash.com/photo-1600353068440-63638efc285f" alt="Plumbing">
-                <h3>Plumbing</h3>
-            </div>
-            <div class="section-card" onclick="openSection('electrical')">
-                <img src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7" alt="Electrical">
-                <h3>Electrical</h3>
-            </div>
-            <div class="section-card" onclick="openSection('paints')">
-                <img src="https://images.unsplash.com/photo-1579027989536-b7b1f875659b" alt="Paints & Coatings">
-                <h3>Paints & Coatings</h3>
-            </div>
-            <div class="section-card" onclick="openSection('safety')">
-                <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae" alt="Safety Equipment">
-                <h3>Safety Equipment</h3>
-            </div>
-            <div class="section-card" onclick="openSection('hardware')">
-                <img src="https://images.unsplash.com/photo-1588449668365-d15e397f6787" alt="Hardware">
-                <h3>Hardware</h3>
-            </div>
-        </div>
+        <main>
+            <section class="categories">
+                <h2>Our Product Categories</h2>
+                <div class="category-grid">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
 
-        <div id="products-container"></div>
+        <footer>
+            <p>&copy; 2023 Construction Central. All rights reserved.</p>
+        </footer>
+    </div>
 
-        <div id="seller-dashboard" class="seller-dashboard">
-            <h2>Seller Dashboard</h2>
-            <form id="product-form" class="product-form">
-                <div class="form-group">
-                    <label for="product-name">Product Name</label>
-                    <input type="text" id="product-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="product-category">Category</label>
-                    <select id="product-category" required>
-                        <option value="">Select Category</option>
-                        <option value="raw-materials">Raw Materials</option>
-                        <option value="nails-fasteners">Nails & Fasteners</option>
-                        <option value="power-tools">Power Tools</option>
-                        <option value="plumbing">Plumbing</option>
-                        <option value="electrical">Electrical</option>
-                        <option value="paints">Paints & Coatings</option>
-                        <option value="safety">Safety Equipment</option>
-                        <option value="hardware">Hardware</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="product-description">Description</label>
-                    <textarea id="product-description" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="product-price">Price (₹)</label>
-                    <input type="number" id="product-price" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="product-image">Product Image</label>
-                    <input type="file" id="product-image" accept="image/*" required>
-                </div>
-                <button type="submit" class="btn">List Product</button>
-            </form>
-
-            <h3>Your Listed Products</h3>
-            <div id="seller-products" class="product-listing"></div>
+    <!-- Login Popup -->
+    <div id="login-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <img src="logo.png" alt="Construction Central Logo" class="popup-logo">
+            <h2>Welcome to Construction Central</h2>
+            <p>Please select your user type to continue</p>
+            <div class="user-type-buttons">
+                <button id="customer-btn" class="user-btn">I'm a Customer</button>
+                <button id="seller-btn" class="user-btn">I'm a Seller</button>
+            </div>
         </div>
     </div>
 
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('login-modal')">&times;</span>
-            <h2 class="modal-title">Welcome to Construction Central</h2>
-            <p style="text-align: center; margin-bottom: 20px;">Please select your user type to continue</p>
-            
-            <div class="user-type">
-                <div class="user-option" onclick="selectUserType('customer')">
-                    <i class="fas fa-user"></i>
-                    <h3>Customer</h3>
-                    <p>I want to buy products</p>
-                </div>
-                <div class="user-option" onclick="selectUserType('seller')">
-                    <i class="fas fa-store"></i>
-                    <h3>Seller</h3>
-                    <p>I want to sell products</p>
-                </div>
-            </div>
-            
-            <div id="customer-actions" style="display: none;">
-                <p>You can browse as a guest. Login will be required only when placing an order.</p>
-                <button class="btn" onclick="proceedAsCustomer()">Continue as Guest</button>
-                <button class="btn btn-google" onclick="loginWithGoogle()">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo">
-                    Login with Google
+    <!-- Seller Portal Popup -->
+    <div id="seller-portal-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>Seller Portal</h2>
+            <div id="seller-login-container">
+                <p>Please login with Google to list your products</p>
+                <button id="google-login-btn" class="gsi-btn">
+                    <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google logo">
+                    <span>Sign in with Google</span>
                 </button>
             </div>
-            
-            <div id="seller-actions" style="display: none;">
-                <p>As a seller, you need to login to list your products.</p>
-                <button class="btn btn-google" onclick="loginWithGoogle()">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo">
-                    Login with Google
-                </button>
+            <div id="seller-dashboard" style="display: none;">
+                <h3>List Your Products</h3>
+                <form id="product-form">
+                    <div class="form-group">
+                        <label for="product-name">Product Name:</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-category">Category:</label>
+                        <select id="product-category" required>
+                            <option value="">Select Category</option>
+                            <option value="raw-materials">Raw Materials</option>
+                            <option value="nails">Nails & Fasteners</option>
+                            <option value="tools">Tools & Equipment</option>
+                            <option value="paints">Paints & Coatings</option>
+                            <option value="plumbing">Plumbing</option>
+                            <option value="electrical">Electrical</option>
+                            <option value="safety">Safety Equipment</option>
+                            <option value="hardware">Hardware</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-price">Price (₹):</label>
+                        <input type="number" id="product-price" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">Description:</label>
+                        <textarea id="product-description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image">Product Image:</label>
+                        <input type="file" id="product-image" accept="image/*" required>
+                        <small>Please upload original photo of the product</small>
+                    </div>
+                    <button type="submit" class="submit-btn">List Product</button>
+                </form>
+                <div id="seller-products">
+                    <h3>Your Listed Products</h3>
+                    <div id="products-list"></div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="order-modal" class="modal order-modal">
+    <!-- Product Modal -->
+    <div id="product-modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('order-modal')">&times;</span>
-            <h2 class="modal-title">Place Your Order</h2>
-            
-            <div id="order-details"></div>
-            
-            <div class="quantity-selector">
-                <button onclick="changeQuantity(-1)">-</button>
-                <input type="number" id="quantity" value="1" min="1">
-                <button onclick="changeQuantity(1)">+</button>
+            <span class="close-modal">&times;</span>
+            <div id="modal-product-details">
+                <!-- Product details will be populated by JavaScript -->
             </div>
-            
-            <button class="btn" onclick="proceedToPayment()">Proceed to Payment</button>
+            <div id="order-section">
+                <h3>Place Your Order</h3>
+                <form id="order-form">
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" min="1" value="1" required>
+                    </div>
+                    <div id="login-prompt" style="display: none;">
+                        <p>Please login to place your order</p>
+                        <button id="customer-login-btn" class="gsi-btn">
+                            <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google logo">
+                            <span>Sign in with Google</span>
+                        </button>
+                    </div>
+                    <button type="submit" id="place-order-btn" class="submit-btn">Proceed to Payment</button>
+                </form>
+            </div>
         </div>
     </div>
 
-    <div id="payment-modal" class="modal payment-modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('payment-modal')">&times;</span>
-            <h2 class="modal-title">Complete Your Purchase</h2>
-            
-            <div id="payment-summary"></div>
-            
-            <div class="payment-options">
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content payment-content">
+            <span class="close-modal">&times;</span>
+            <h2>Complete Your Purchase</h2>
+            <div id="order-summary">
+                <!-- Order summary will be populated by JavaScript -->
+            </div>
+            <div id="payment-options">
                 <h3>Select Payment Method</h3>
-                <label class="payment-option">
-                    <input type="radio" name="payment" value="credit-card" checked>
-                    <img src="https://cdn-icons-png.flaticon.com/512/179/179457.png" alt="Credit Card">
-                    Credit/Debit Card
-                </label>
-                <label class="payment-option">
-                    <input type="radio" name="payment" value="upi">
-                    <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="UPI">
-                    UPI
-                </label>
-                <label class="payment-option">
-                    <input type="radio" name="payment" value="net-banking">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2489/2489138.png" alt="Net Banking">
-                    Net Banking
-                </label>
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <input type="radio" id="credit-card" name="payment" checked>
+                        <label for="credit-card">Credit/Debit Card</label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="upi" name="payment">
+                        <label for="upi">UPI</label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="net-banking" name="payment">
+                        <label for="net-banking">Net Banking</label>
+                    </div>
+                </div>
+                <div id="card-details" class="payment-form">
+                    <div class="form-group">
+                        <label for="card-number">Card Number:</label>
+                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-expiry">Expiry Date:</label>
+                        <input type="text" id="card-expiry" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-cvv">CVV:</label>
+                        <input type="text" id="card-cvv" placeholder="123" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-name">Name on Card:</label>
+                        <input type="text" id="card-name" required>
+                    </div>
+                </div>
+                <button id="confirm-payment" class="submit-btn">Confirm Payment</button>
             </div>
-            
-            <button class="btn" onclick="processPayment()">Complete Payment</button>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
 </html>
