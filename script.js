@@ -1,205 +1,276 @@
-// Section data
-const sectionsData = {
-    'raw-materials': {
-        title: 'Raw Materials',
-        items: [
-            { id: 1, name: 'Cement', price: 400, unit: 'bag' },
-            { id: 2, name: 'Brick', price: 8, unit: 'piece' },
-            { id: 3, name: 'River Sand', price: 1200, unit: 'ton' },
-            { id: 4, name: 'Coarse Aggregate', price: 900, unit: 'ton' },
-            { id: 5, name: 'Steel Rods', price: 65, unit: 'kg' }
-        ]
-    },
-    'nails': {
-        title: 'Nails & Fasteners',
-        items: [
-            { id: 6, name: 'Common Nails', price: 120, unit: 'kg' },
-            { id: 7, name: 'Roofing Nails', price: 150, unit: 'kg' },
-            { id: 8, name: 'Concrete Nails', price: 180, unit: 'kg' },
-            { id: 9, name: 'Screws', price: 200, unit: 'box' },
-            { id: 10, name: 'Anchors', price: 10, unit: 'piece' }
-        ]
-    },
-    'power-tools': {
-        title: 'Power Tools',
-        items: [
-            { id: 11, name: 'Drill Machine', price: 3500, unit: 'piece' },
-            { id: 12, name: 'Angle Grinder', price: 2800, unit: 'piece' },
-            { id: 13, name: 'Cutter Machine', price: 4200, unit: 'piece' },
-            { id: 14, name: 'Hammer Drill', price: 5000, unit: 'piece' },
-            { id: 15, name: 'Circular Saw', price: 4500, unit: 'piece' }
-        ]
-    },
-    'paints': {
-        title: 'Paints & Coatings',
-        items: [
-            { id: 16, name: 'Interior Emulsion', price: 1200, unit: 'gallon' },
-            { id: 17, name: 'Exterior Paint', price: 1500, unit: 'gallon' },
-            { id: 18, name: 'Primer', price: 900, unit: 'gallon' },
-            { id: 19, name: 'Enamel Paint', price: 1100, unit: 'gallon' },
-            { id: 20, name: 'Wood Polish', price: 1800, unit: 'liter' }
-        ]
-    },
-    'plumbing': {
-        title: 'Plumbing',
-        items: [
-            { id: 21, name: 'PVC Pipes', price: 120, unit: 'meter' },
-            { id: 22, name: 'CPVC Pipes', price: 180, unit: 'meter' },
-            { id: 23, name: 'Faucet', price: 800, unit: 'piece' },
-            { id: 24, name: 'Shower Set', price: 2500, unit: 'set' },
-            { id: 25, name: 'Water Tank', price: 3500, unit: 'piece' }
-        ]
-    },
-    'electrical': {
-        title: 'Electrical',
-        items: [
-            { id: 26, name: 'Electrical Wires', price: 150, unit: 'meter' },
-            { id: 27, name: 'Switches', price: 60, unit: 'piece' },
-            { id: 28, name: 'Sockets', price: 80, unit: 'piece' },
-            { id: 29, name: 'Circuit Breaker', price: 400, unit: 'piece' },
-            { id: 30, name: 'LED Bulbs', price: 120, unit: 'piece' }
-        ]
-    },
-    'safety': {
-        title: 'Safety Equipment',
-        items: [
-            { id: 31, name: 'Safety Helmet', price: 300, unit: 'piece' },
-            { id: 32, name: 'Safety Gloves', price: 150, unit: 'pair' },
-            { id: 33, name: 'Safety Goggles', price: 200, unit: 'piece' },
-            { id: 34, name: 'Safety Shoes', price: 1200, unit: 'pair' },
-            { id: 35, name: 'Ear Protection', price: 250, unit: 'piece' }
-        ]
-    },
-    'hardware': {
-        title: 'Hardware',
-        items: [
-            { id: 36, name: 'Hinges', price: 25, unit: 'piece' },
-            { id: 37, name: 'Handles', price: 80, unit: 'piece' },
-            { id: 38, name: 'Locks', price: 250, unit: 'piece' },
-            { id: 39, name: 'Drawer Slides', price: 180, unit: 'pair' },
-            { id: 40, name: 'Latches', price: 50, unit: 'piece' }
-        ]
-    }
-};
-
 // Global variables
-let currentItem = null;
-let isLoggedIn = false;
+let currentUser = null;
+let currentUserType = null;
+let currentProduct = null;
+let products = {
+    'raw-materials': [
+        { id: 1, name: 'Portland Cement (50kg)', price: 400, description: 'High quality Portland cement for construction', image: 'https://images.unsplash.com/photo-1605152276897-4f618f831968' },
+        { id: 2, name: 'Clay Bricks (100 pieces)', price: 2500, description: 'Standard size clay bricks', image: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115' },
+        { id: 3, name: 'River Sand (1 ton)', price: 1800, description: 'Fine quality river sand for construction', image: 'https://images.unsplash.com/photo-1608889825103-eb2a7e1f0fcd' }
+    ],
+    'nails-fasteners': [
+        { id: 4, name: 'Galvanized Nails (1kg)', price: 120, description: 'Rust-resistant galvanized nails', image: 'https://images.unsplash.com/photo-1584735422189-fbd23f4c6b8a' },
+        { id: 5, name: 'Wood Screws (100 pieces)', price: 180, description: 'Assorted wood screws', image: 'https://images.unsplash.com/photo-1584735422189-fbd23f4c6b8a' }
+    ],
+    'power-tools': [
+        { id: 6, name: 'Electric Drill Machine', price: 3500, description: '750W heavy duty drill machine', image: 'https://images.unsplash.com/photo-1591798454113-023ed737a270' },
+        { id: 7, name: 'Angle Grinder', price: 2800, description: '850W angle grinder with safety features', image: 'https://images.unsplash.com/photo-1591798454113-023ed737a270' }
+    ]
+};
+let sellerProducts = [];
 
-// DOM elements
-const sectionModal = document.getElementById('sectionModal');
-const orderModal = document.getElementById('orderModal');
-const paymentModal = document.getElementById('paymentModal');
-const modalItems = document.getElementById('modalItems');
-const modalTitle = document.getElementById('modalTitle');
-const orderItemTitle = document.getElementById('orderItemTitle');
-const loginPrompt = document.getElementById('loginPrompt');
-const orderForm = document.getElementById('orderForm');
-const paymentSummary = document.getElementById('paymentSummary');
-const loginBtn = document.getElementById('loginBtn');
-
-// Open section modal with items
-function openSection(sectionId) {
-    const section = sectionsData[sectionId];
-    modalTitle.textContent = section.title;
-    modalItems.innerHTML = '';
+// Initialize the page
+document.addEventListener('DOMContentLoaded', function() {
+    // Show login modal when page loads
+    document.getElementById('login-modal').style.display = 'flex';
     
-    section.items.forEach(item => {
-        const itemCard = document.createElement('div');
-        itemCard.className = 'item-card';
-        itemCard.innerHTML = `
-            <img src="item-${item.id}.jpg" alt="${item.name}">
-            <h3>${item.name}</h3>
-            <p>₹${item.price} per ${item.unit}</p>
-        `;
-        itemCard.addEventListener('click', () => openOrderModal(item));
-        modalItems.appendChild(itemCard);
+    // Load seller products from localStorage if available
+    const savedProducts = localStorage.getItem('sellerProducts');
+    if (savedProducts) {
+        sellerProducts = JSON.parse(savedProducts);
+        renderSellerProducts();
+    }
+    
+    // Form submission for seller to add product
+    document.getElementById('product-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        addSellerProduct();
     });
+});
+
+// User type selection
+function selectUserType(type) {
+    currentUserType = type;
     
-    sectionModal.style.display = 'block';
+    // Highlight selected option
+    document.querySelectorAll('.user-option').forEach(option => {
+        option.classList.remove('selected');
+    });
+    event.currentTarget.classList.add('selected');
+    
+    // Show appropriate actions
+    if (type === 'customer') {
+        document.getElementById('customer-actions').style.display = 'block';
+        document.getElementById('seller-actions').style.display = 'none';
+    } else {
+        document.getElementById('customer-actions').style.display = 'none';
+        document.getElementById('seller-actions').style.display = 'block';
+    }
 }
 
-// Open order modal for specific item
-function openOrderModal(item) {
-    currentItem = item;
-    orderItemTitle.textContent = item.name;
+// Proceed as customer (guest)
+function proceedAsCustomer() {
+    closeModal('login-modal');
+    currentUserType = 'customer';
+}
+
+// Login with Google (mock implementation)
+function loginWithGoogle() {
+    // In a real implementation, this would use Google Identity Platform
+    currentUser = {
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        picture: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde'
+    };
     
-    if (isLoggedIn) {
-        orderForm.style.display = 'block';
-        loginPrompt.style.display = 'none';
+    closeModal('login-modal');
+    
+    if (currentUserType === 'seller') {
+        document.getElementById('seller-dashboard').style.display = 'block';
+        showNotification('Logged in successfully as seller');
     } else {
-        orderForm.style.display = 'none';
-        loginPrompt.style.display = 'block';
+        showNotification('Logged in successfully');
+    }
+}
+
+// Open product section
+function openSection(sectionId) {
+    const container = document.getElementById('products-container');
+    container.innerHTML = '';
+    
+    if (products[sectionId]) {
+        container.innerHTML = `<h2>${formatSectionName(sectionId)}</h2><div class="product-listing"></div>`;
+        const listingContainer = container.querySelector('.product-listing');
+        
+        products[sectionId].forEach(product => {
+            listingContainer.appendChild(createProductCard(product));
+        });
+    } else {
+        container.innerHTML = `<p>No products available in this category yet.</p>`;
     }
     
-    sectionModal.style.display = 'none';
-    orderModal.style.display = 'block';
+    // Scroll to products
+    container.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Format section ID to readable name
+function formatSectionName(sectionId) {
+    return sectionId.split('-').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
+}
+
+// Create product card HTML
+function createProductCard(product) {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <div class="product-info">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <p class="price">₹${product.price}</p>
+            <button class="btn" onclick="openOrderModal(${product.id})">Order Now</button>
+        </div>
+    `;
+    return card;
+}
+
+// Open order modal
+function openOrderModal(productId) {
+    // Find product in all categories
+    let foundProduct = null;
+    for (const category in products) {
+        const product = products[category].find(p => p.id === productId);
+        if (product) {
+            foundProduct = product;
+            break;
+        }
+    }
+    
+    if (!foundProduct) return;
+    
+    currentProduct = foundProduct;
+    
+    document.getElementById('order-details').innerHTML = `
+        <div style="display: flex; margin-bottom: 20px;">
+            <img src="${foundProduct.image}" alt="${foundProduct.name}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 4px; margin-right: 15px;">
+            <div>
+                <h3>${foundProduct.name}</h3>
+                <p>${foundProduct.description}</p>
+                <p style="font-weight: bold; color: #27ae60; font-size: 18px;">₹${foundProduct.price}</p>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('quantity').value = 1;
+    document.getElementById('order-modal').style.display = 'flex';
+}
+
+// Change quantity
+function changeQuantity(change) {
+    const quantityInput = document.getElementById('quantity');
+    let newValue = parseInt(quantityInput.value) + change;
+    if (newValue < 1) newValue = 1;
+    quantityInput.value = newValue;
 }
 
 // Proceed to payment
 function proceedToPayment() {
-    const quantity = document.getElementById('quantity').value;
-    if (!quantity || quantity < 1) {
-        alert('Please enter a valid quantity');
+    if (!currentUser && currentUserType !== 'customer') {
+        showNotification('Please login to place an order');
+        document.getElementById('login-modal').style.display = 'flex';
+        closeModal('order-modal');
         return;
     }
     
-    const total = quantity * currentItem.price;
-    paymentSummary.innerHTML = `
-        <p><strong>Item:</strong> ${currentItem.name}</p>
-        <p><strong>Quantity:</strong> ${quantity} ${currentItem.unit}(s)</p>
-        <p><strong>Unit Price:</strong> ₹${currentItem.price}</p>
-        <p><strong>Total Amount:</strong> ₹${total}</p>
+    const quantity = parseInt(document.getElementById('quantity').value);
+    const total = quantity * currentProduct.price;
+    
+    document.getElementById('payment-summary').innerHTML = `
+        <div style="margin-bottom: 20px;">
+            <h3>Order Summary</h3>
+            <p>${currentProduct.name} x ${quantity}</p>
+            <p style="font-weight: bold; color: #27ae60; font-size: 18px;">Total: ₹${total}</p>
+        </div>
     `;
     
-    orderModal.style.display = 'none';
-    paymentModal.style.display = 'block';
+    closeModal('order-modal');
+    document.getElementById('payment-modal').style.display = 'flex';
 }
 
-// Select payment method
-function selectPayment(method) {
-    // In a real app, you would handle the payment integration here
-    console.log(`Selected payment method: ${method}`);
+// Process payment (mock implementation)
+function processPayment() {
+    // In a real implementation, this would integrate with a payment gateway API/SDK
+    showNotification('Payment successful! Your order has been placed.');
+    closeModal('payment-modal');
+    
+    // In a real system, this order data would be sent to the seller
+    const orderData = {
+        product: currentProduct,
+        quantity: parseInt(document.getElementById('quantity').value),
+        total: parseInt(document.getElementById('quantity').value) * currentProduct.price,
+        customer: currentUser || { name: 'Guest Customer' },
+        date: new Date().toLocaleString()
+    };
+    
+    console.log('Order placed:', orderData);
 }
 
-// Confirm payment
-function confirmPayment() {
-    alert('Payment successful! Your order has been placed.');
-    closeModal();
+// Add seller product
+function addSellerProduct() {
+    const name = document.getElementById('product-name').value;
+    const category = document.getElementById('product-category').value;
+    const description = document.getElementById('product-description').value;
+    const price = document.getElementById('product-price').value;
+    const imageInput = document.getElementById('product-image');
+    
+    // In a real implementation, you would upload the image to a server
+    // For this demo, we'll just use a placeholder
+    const imageFile = imageInput.files[0];
+    let imageUrl = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae'; // Default placeholder
+    
+    if (imageFile) {
+        // Create a local URL for the preview (in a real app, you'd upload this)
+        imageUrl = URL.createObjectURL(imageFile);
+    }
+    
+    const newProduct = {
+        id: Date.now(), // Simple unique ID
+        name,
+        category,
+        description,
+        price: parseFloat(price),
+        image: imageUrl,
+        seller: currentUser.name
+    };
+    
+    sellerProducts.push(newProduct);
+    saveSellerProducts();
+    renderSellerProducts();
+    
+    // Reset form
+    document.getElementById('product-form').reset();
+    showNotification('Product listed successfully!');
 }
 
-// Login with Google
-function loginWithGoogle() {
-    // In a real app, you would implement Google OAuth here
-    isLoggedIn = true;
-    alert('Logged in successfully with Google');
-    openOrderModal(currentItem);
+// Render seller products
+function renderSellerProducts() {
+    const container = document.getElementById('seller-products');
+    container.innerHTML = '';
+    
+    if (sellerProducts.length === 0) {
+        container.innerHTML = '<p>You have no listed products yet.</p>';
+        return;
+    }
+    
+    sellerProducts.forEach(product => {
+        container.appendChild(createProductCard(product));
+    });
+}
+
+// Save seller products to localStorage
+function saveSellerProducts() {
+    localStorage.setItem('sellerProducts', JSON.stringify(sellerProducts));
 }
 
 // Close modal
-function closeModal() {
-    sectionModal.style.display = 'none';
-    orderModal.style.display = 'none';
-    paymentModal.style.display = 'none';
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
 }
 
-// Login button click
-loginBtn.addEventListener('click', () => {
-    // Toggle login state for demo purposes
-    isLoggedIn = !isLoggedIn;
-    loginBtn.textContent = isLoggedIn ? 'Logout' : 'Login';
-    alert(isLoggedIn ? 'Logged in successfully' : 'Logged out successfully');
-});
-
-// Close modal when clicking outside
-window.addEventListener('click', (event) => {
-    if (event.target === sectionModal) {
-        closeModal();
-    }
-    if (event.target === orderModal) {
-        closeModal();
-    }
-    if (event.target === paymentModal) {
-        closeModal();
-    }
-});
+// Show notification
+function showNotification(message) {
+    // In a real implementation, this would show a nice toast notification
+    alert(message);
+}

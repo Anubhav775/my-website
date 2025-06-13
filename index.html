@@ -4,148 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Construction Central</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Construction Central Logo" class="logo">
-            <h1>Construction Central</h1>
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Construction Central Logo">
+                <h1>Construction Central</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#sections">Sections</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><button id="loginBtn">Login</button></li>
-            </ul>
-        </nav>
     </header>
 
-    <main>
-        <section id="home" class="hero">
-            <h2>Your One-Stop Construction Material Solution</h2>
-            <p>Quality materials for all your construction needs</p>
-            <button class="cta">Explore Products</button>
-        </section>
-
-        <section id="sections" class="sections-container">
-            <h2>Our Product Categories</h2>
-            <div class="section-grid">
-                <!-- Section 1: Raw Materials -->
-                <div class="section-card" onclick="openSection('raw-materials')">
-                    <i class="fas fa-cubes"></i>
-                    <h3>Raw Materials</h3>
-                    <p>Cement, Bricks, Sand and more</p>
-                </div>
-
-                <!-- Section 2: Nails -->
-                <div class="section-card" onclick="openSection('nails')">
-                    <i class="fas fa-hammer"></i>
-                    <h3>Nails & Fasteners</h3>
-                    <p>All types of nails and fastening solutions</p>
-                </div>
-
-                <!-- Section 3: Power Tools -->
-                <div class="section-card" onclick="openSection('power-tools')">
-                    <i class="fas fa-tools"></i>
-                    <h3>Power Tools</h3>
-                    <p>Drills, Grinders, Cutters and more</p>
-                </div>
-
-                <!-- Section 4: Paints -->
-                <div class="section-card" onclick="openSection('paints')">
-                    <i class="fas fa-paint-roller"></i>
-                    <h3>Paints & Coatings</h3>
-                    <p>Interior, exterior and specialty paints</p>
-                </div>
-
-                <!-- Section 5: Plumbing -->
-                <div class="section-card" onclick="openSection('plumbing')">
-                    <i class="fas fa-faucet"></i>
-                    <h3>Plumbing</h3>
-                    <p>Pipes, fittings and fixtures</p>
-                </div>
-
-                <!-- Section 6: Electrical -->
-                <div class="section-card" onclick="openSection('electrical')">
-                    <i class="fas fa-bolt"></i>
-                    <h3>Electrical</h3>
-                    <p>Wires, switches and accessories</p>
-                </div>
-
-                <!-- Section 7: Safety -->
-                <div class="section-card" onclick="openSection('safety')">
-                    <i class="fas fa-hard-hat"></i>
-                    <h3>Safety Equipment</h3>
-                    <p>Helmets, gloves and protective gear</p>
-                </div>
-
-                <!-- Section 8: Hardware -->
-                <div class="section-card" onclick="openSection('hardware')">
-                    <i class="fas fa-wrench"></i>
-                    <h3>Hardware</h3>
-                    <p>Hinges, handles and other hardware</p>
-                </div>
+    <div class="main-container">
+        <h2>Our Product Categories</h2>
+        <div class="sections-grid">
+            <div class="section-card" onclick="openSection('raw-materials')">
+                <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968" alt="Raw Materials">
+                <h3>Raw Materials</h3>
             </div>
-        </section>
+            <div class="section-card" onclick="openSection('nails-fasteners')">
+                <img src="https://images.unsplash.com/photo-1584735422189-fbd23f4c6b8a" alt="Nails & Fasteners">
+                <h3>Nails & Fasteners</h3>
+            </div>
+            <div class="section-card" onclick="openSection('power-tools')">
+                <img src="https://images.unsplash.com/photo-1591798454113-023ed737a270" alt="Power Tools">
+                <h3>Power Tools</h3>
+            </div>
+            <div class="section-card" onclick="openSection('plumbing')">
+                <img src="https://images.unsplash.com/photo-1600353068440-63638efc285f" alt="Plumbing">
+                <h3>Plumbing</h3>
+            </div>
+            <div class="section-card" onclick="openSection('electrical')">
+                <img src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7" alt="Electrical">
+                <h3>Electrical</h3>
+            </div>
+            <div class="section-card" onclick="openSection('paints')">
+                <img src="https://images.unsplash.com/photo-1579027989536-b7b1f875659b" alt="Paints & Coatings">
+                <h3>Paints & Coatings</h3>
+            </div>
+            <div class="section-card" onclick="openSection('safety')">
+                <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae" alt="Safety Equipment">
+                <h3>Safety Equipment</h3>
+            </div>
+            <div class="section-card" onclick="openSection('hardware')">
+                <img src="https://images.unsplash.com/photo-1588449668365-d15e397f6787" alt="Hardware">
+                <h3>Hardware</h3>
+            </div>
+        </div>
 
-        <section id="contact" class="contact">
-            <h2>Contact Us</h2>
-            <p>Email: info@constructioncentral.com</p>
-            <p>Phone: +91 83184 84352</p>
-        </section>
-    </main>
+        <div id="products-container"></div>
 
-    <!-- Modal for Section Items -->
-    <div id="sectionModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle">Section Items</h2>
-            <div id="modalItems" class="items-grid"></div>
+        <div id="seller-dashboard" class="seller-dashboard">
+            <h2>Seller Dashboard</h2>
+            <form id="product-form" class="product-form">
+                <div class="form-group">
+                    <label for="product-name">Product Name</label>
+                    <input type="text" id="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-category">Category</label>
+                    <select id="product-category" required>
+                        <option value="">Select Category</option>
+                        <option value="raw-materials">Raw Materials</option>
+                        <option value="nails-fasteners">Nails & Fasteners</option>
+                        <option value="power-tools">Power Tools</option>
+                        <option value="plumbing">Plumbing</option>
+                        <option value="electrical">Electrical</option>
+                        <option value="paints">Paints & Coatings</option>
+                        <option value="safety">Safety Equipment</option>
+                        <option value="hardware">Hardware</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Description</label>
+                    <textarea id="product-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Price (₹)</label>
+                    <input type="number" id="product-price" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-image">Product Image</label>
+                    <input type="file" id="product-image" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn">List Product</button>
+            </form>
+
+            <h3>Your Listed Products</h3>
+            <div id="seller-products" class="product-listing"></div>
         </div>
     </div>
 
-    <!-- Order Modal -->
-    <div id="orderModal" class="modal">
+    <div id="login-modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="orderItemTitle">Order Item</h2>
-            <div id="orderForm">
-                <div class="form-group">
-                    <label for="quantity">Quantity:</label>
-                    <input type="number" id="quantity" min="1" value="1">
+            <span class="close-btn" onclick="closeModal('login-modal')">&times;</span>
+            <h2 class="modal-title">Welcome to Construction Central</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Please select your user type to continue</p>
+            
+            <div class="user-type">
+                <div class="user-option" onclick="selectUserType('customer')">
+                    <i class="fas fa-user"></i>
+                    <h3>Customer</h3>
+                    <p>I want to buy products</p>
                 </div>
-                <button onclick="proceedToPayment()">Proceed to Payment</button>
+                <div class="user-option" onclick="selectUserType('seller')">
+                    <i class="fas fa-store"></i>
+                    <h3>Seller</h3>
+                    <p>I want to sell products</p>
+                </div>
             </div>
-            <div id="loginPrompt" style="display: none;">
-                <p>Please login to continue with your order</p>
-                <button onclick="loginWithGoogle()" class="google-login">
-                    <i class="fab fa-google"></i> Login with Google
+            
+            <div id="customer-actions" style="display: none;">
+                <p>You can browse as a guest. Login will be required only when placing an order.</p>
+                <button class="btn" onclick="proceedAsCustomer()">Continue as Guest</button>
+                <button class="btn btn-google" onclick="loginWithGoogle()">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo">
+                    Login with Google
+                </button>
+            </div>
+            
+            <div id="seller-actions" style="display: none;">
+                <p>As a seller, you need to login to list your products.</p>
+                <button class="btn btn-google" onclick="loginWithGoogle()">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo">
+                    Login with Google
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Payment Modal -->
-    <div id="paymentModal" class="modal">
+    <div id="order-modal" class="modal order-modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Complete Your Payment</h2>
-            <p id="paymentSummary">Order summary will appear here</p>
-            <div class="payment-options">
-                <button onclick="selectPayment('google-pay')"><i class="fab fa-google-pay"></i> Google Pay</button>
-                <button onclick="selectPayment('phonepe')"><i class="fas fa-mobile-alt"></i> PhonePe</button>
-                <button onclick="selectPayment('paytm')"><i class="fas fa-wallet"></i> Paytm</button>
+            <span class="close-btn" onclick="closeModal('order-modal')">&times;</span>
+            <h2 class="modal-title">Place Your Order</h2>
+            
+            <div id="order-details"></div>
+            
+            <div class="quantity-selector">
+                <button onclick="changeQuantity(-1)">-</button>
+                <input type="number" id="quantity" value="1" min="1">
+                <button onclick="changeQuantity(1)">+</button>
             </div>
-            <button class="confirm-payment" onclick="confirmPayment()">Confirm Payment</button>
+            
+            <button class="btn" onclick="proceedToPayment()">Proceed to Payment</button>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2023 Construction Central. All rights reserved.</p>
-    </footer>
+    <div id="payment-modal" class="modal payment-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('payment-modal')">&times;</span>
+            <h2 class="modal-title">Complete Your Purchase</h2>
+            
+            <div id="payment-summary"></div>
+            
+            <div class="payment-options">
+                <h3>Select Payment Method</h3>
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="credit-card" checked>
+                    <img src="https://cdn-icons-png.flaticon.com/512/179/179457.png" alt="Credit Card">
+                    Credit/Debit Card
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="upi">
+                    <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="UPI">
+                    UPI
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="net-banking">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2489/2489138.png" alt="Net Banking">
+                    Net Banking
+                </label>
+            </div>
+            
+            <button class="btn" onclick="processPayment()">Complete Payment</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
