@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Central</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Construction Central Logo" class="logo">
+            <h1>Construction Central</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sections">Sections</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button id="loginBtn">Login</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h2>Your One-Stop Construction Material Solution</h2>
+            <p>Quality materials for all your construction needs</p>
+            <button class="cta">Explore Products</button>
+        </section>
+
+        <section id="sections" class="sections-container">
+            <h2>Our Product Categories</h2>
+            <div class="section-grid">
+                <!-- Section 1: Raw Materials -->
+                <div class="section-card" onclick="openSection('raw-materials')">
+                    <i class="fas fa-cubes"></i>
+                    <h3>Raw Materials</h3>
+                    <p>Cement, Bricks, Sand and more</p>
+                </div>
+
+                <!-- Section 2: Nails -->
+                <div class="section-card" onclick="openSection('nails')">
+                    <i class="fas fa-hammer"></i>
+                    <h3>Nails & Fasteners</h3>
+                    <p>All types of nails and fastening solutions</p>
+                </div>
+
+                <!-- Section 3: Power Tools -->
+                <div class="section-card" onclick="openSection('power-tools')">
+                    <i class="fas fa-tools"></i>
+                    <h3>Power Tools</h3>
+                    <p>Drills, Grinders, Cutters and more</p>
+                </div>
+
+                <!-- Section 4: Paints -->
+                <div class="section-card" onclick="openSection('paints')">
+                    <i class="fas fa-paint-roller"></i>
+                    <h3>Paints & Coatings</h3>
+                    <p>Interior, exterior and specialty paints</p>
+                </div>
+
+                <!-- Section 5: Plumbing -->
+                <div class="section-card" onclick="openSection('plumbing')">
+                    <i class="fas fa-faucet"></i>
+                    <h3>Plumbing</h3>
+                    <p>Pipes, fittings and fixtures</p>
+                </div>
+
+                <!-- Section 6: Electrical -->
+                <div class="section-card" onclick="openSection('electrical')">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Electrical</h3>
+                    <p>Wires, switches and accessories</p>
+                </div>
+
+                <!-- Section 7: Safety -->
+                <div class="section-card" onclick="openSection('safety')">
+                    <i class="fas fa-hard-hat"></i>
+                    <h3>Safety Equipment</h3>
+                    <p>Helmets, gloves and protective gear</p>
+                </div>
+
+                <!-- Section 8: Hardware -->
+                <div class="section-card" onclick="openSection('hardware')">
+                    <i class="fas fa-wrench"></i>
+                    <h3>Hardware</h3>
+                    <p>Hinges, handles and other hardware</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <p>Email: info@constructioncentral.com</p>
+            <p>Phone: +91 83184 84352</p>
+        </section>
+    </main>
+
+    <!-- Modal for Section Items -->
+    <div id="sectionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Section Items</h2>
+            <div id="modalItems" class="items-grid"></div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="orderItemTitle">Order Item</h2>
+            <div id="orderForm">
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" min="1" value="1">
+                </div>
+                <button onclick="proceedToPayment()">Proceed to Payment</button>
+            </div>
+            <div id="loginPrompt" style="display: none;">
+                <p>Please login to continue with your order</p>
+                <button onclick="loginWithGoogle()" class="google-login">
+                    <i class="fab fa-google"></i> Login with Google
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Complete Your Payment</h2>
+            <p id="paymentSummary">Order summary will appear here</p>
+            <div class="payment-options">
+                <button onclick="selectPayment('google-pay')"><i class="fab fa-google-pay"></i> Google Pay</button>
+                <button onclick="selectPayment('phonepe')"><i class="fas fa-mobile-alt"></i> PhonePe</button>
+                <button onclick="selectPayment('paytm')"><i class="fas fa-wallet"></i> Paytm</button>
+            </div>
+            <button class="confirm-payment" onclick="confirmPayment()">Confirm Payment</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Construction Central. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
